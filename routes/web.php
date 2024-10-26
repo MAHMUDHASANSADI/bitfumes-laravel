@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ Route::get('/', function () {
     // return view('welcome');
 
     // Select query
-     $users = DB::table('users')->get();
+     $users = User::get();
     //  $user=DB::table('users')->insert([
     //     'username'=>'sadia',
     //     'email'=>'sadia2@gmail.com',
@@ -34,6 +35,16 @@ Route::get('/', function () {
     //     "rafa@gmail.com",
     //     "123456"
     // ]);
+    // $user = User::create([
+    //     'username' => 'anwar',
+    //     'email' => 'anwar3@gmail.com',
+    //     'password' => bcrypt('anwar') // It’s recommended to hash passwords
+    // ]);
+    $user = User::create([
+        'username' => 'farook',
+        'email' => 'farook5@gmail.com',
+        'password' => 'farook' // Hashing the password
+    ]);
 
     //   $update = DB::update("update users set email = 'mahmudhasansadi92@gmail.com' where id = 1");
     //   $updates = DB::update("update users set email = 'isratjahan@gmail.com' where id = 2");
@@ -43,7 +54,7 @@ Route::get('/', function () {
 
 
     // Display the result of the insert operation
-    dd($users);
+    dd($user);
 });
 
 Route::get('/dashboard', function () {
